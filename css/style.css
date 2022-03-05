@@ -1,0 +1,141 @@
+*,
+*::before,
+*::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.wrapper{
+    height: 100vh;
+    width: 100vw;
+    background: url('../images/1374076.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    font-family: Poppins;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif;
+}
+
+.left{
+    width: 50%;
+    min-width: 300px;
+    min-height: 300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.left .select-date{
+    background-color: tomato;
+    width: 450px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.left .select-date input{
+    width: 60%;
+    height: 45px;
+    border-radius: 5px;
+    border-color: transparent;
+    cursor: pointer;
+    padding: 7px;
+}
+
+.left .select-date input:focus,
+.left .select-date button:focus{
+    border: none;
+    outline: none;
+}
+
+.left .select-date button{
+    width: 27%;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+
+}
+
+.left .get-date{
+    width: 450px;
+    display: inline-flex;
+}
+
+.left .get-date .years,
+.left .get-date .months,
+.left .get-date .days{
+    background: tomato;
+    width: 33.33%;
+    max-height: 200px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    color: black;
+    font-size: 24px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.671);
+}
+
+.left .get-date .years{
+    margin-left: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+.right{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.author{
+    width: 450px;
+    height: 300px;
+}
+
+.author img{
+    height: 100%;
+    width: 100%;
+}
+
+
+@media only screen and (max-width: 767px) {
+    .author{
+        display: none;
+    }
+    .left{
+        width: 100%;
+    }
+    .right{
+        width: 0%;
+    }
+}
+
+
+@media only screen and (max-width: 420px) {
+    .left .get-date .years,
+    .left .get-date .months,
+    .left .get-date .days{
+        max-height: 100px;
+        font-size: 18px;
+    }   
+}
