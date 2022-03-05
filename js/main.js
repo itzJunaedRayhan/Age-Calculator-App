@@ -1,59 +1,57 @@
 let button = document.getElementById("calculateBtn");
-
 let months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 function ageCalculator () {
-    let today = new Date();
-    let inputDate = new Date(document.getElementById("date-input").value);
-    let birthYear, birthMonth, birthDate;
-    
-    let birthDetails = {
-        date  : inputDate.getDate(),
+    let current      = new Date();
+    let currentYear  = current.getFullYear();
+    let currentMonth = current.getMonth() + 1;
+    let currentDay   = current.getDate() 
+    let inputDate    = document.getElementById("date-input").value;
+    let totalYear, totalMonth, totalDay;
+    inputDate = new Date(inputDate);
+    let BirthDetails = {
+        year  : inputDate.getFullYear(),
         month : inputDate.getMonth() + 1,
-        year  : inputDate.getFullYear()
+        day   : inputDate.getDate()
     }
-
-    let currentYear  = today.getFullYear();
-    let currentMonth = today.getMonth() + 1;
-    let currentDate  = today.getDate();
-
-    //  check for Leap Year
-    leapChecker(currentYear);
+    checkLeapYear(BirthDetails.year);
 
     if (
-        birthDetails.year > currentYear ||
-        (birthDetails.month > currentMonth && birthDetails.year == currentYear) || 
-        (birthDetails.date > currentDate && birthDetails.month == currentMonth && birthDetails.year == currentYear)
+    BirthDetails.year > currentYear || 
+    (BirthDetails.year == currentYear && BirthDetails.month > currentMonth) ||
+    (BirthDetails.year == currentYear && BirthDetails.month == currentMonth && BirthDetails.day > currentDay)
     ) {
         alert("Not Born Yet");
         displayResult("-", "-", "-")
-        return;
+
     } else {
-        birthYear = currentYear - birthDetails.year;
-
-        if (currentMonth >= birthDetails.month) {
-            birthMonth = currentMonth - birthDetails.month;
+        totalYear = currentYear - BirthDetails.year;
+        
+        if (currentMonth >= BirthDetails.month) {
+            totalMonth = currentMonth - BirthDetails.month
         } else {
-            birthYear--;
-            birthMonth = 12 + currentMonth - birthDetails.month;
+            totalYear--;
+            totalMonth = 12 - BirthDetails.month + currentMonth;
         }
 
-        if (currentDate >= birthDetails.date) {
-            birthDate = currentDate - birthDetails.date
+        if (currentDay >= BirthDetails.day) {
+            totalDay = currentDay - BirthDetails.day;
         } else {
-            birthMonth--;
-            let days = months[currentMonth - 2] - birthDetails.date;
-            birthDate = days + currentDate;
+            totalMonth--;
+            totalDay = months[currentMonth - 2] - BirthDetails.day + currentDay;
         }
-        //  console.log(birthYear, birthMonth, birthDate);
-        displayResult(birthDate, birthMonth, birthYear);
+
+        displayResult(totalYear, totalMonth, totalDay);
     }
 }
 
 
 
-//  Leap Checker Function:
-function leapChecker (year) {
+
+
+
+//  check Leap Year:
+function checkLeapYear (year) {
     if (year % 4 == 0 || (year % 100 == 0 && year % 400 == 0)) {
         months[1] = 29;
     } else {
@@ -63,12 +61,16 @@ function leapChecker (year) {
 
 
 
-//  Display The Result Function
-function displayResult (date, month, year) {
-    document.querySelector(".days h2").innerHTML = date;
-    document.querySelector(".months h2").innerHTML = month;
+
+
+//  display Result
+function displayResult (year, month, day) {
     document.querySelector(".years h2").innerHTML = year;
+    document.querySelector(".months h2").innerHTML = month;
+    document.querySelector(".days h2").innerHTML = day;
 }
+
+
 
 
 
