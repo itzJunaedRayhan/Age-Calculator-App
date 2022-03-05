@@ -63,7 +63,6 @@ function leapChecker (year) {
     } else {
         months[1] = 28;
     }
-    console.log(year, months[1])
 }
 
 
