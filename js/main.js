@@ -35,19 +35,15 @@ function ageCalculator () {
             birthMonth = currentMonth - birthDetails.month;
         } else {
             birthYear--;
-            birthMonth = 12 + currentDate - birthDetails.month;
+            birthMonth = 12 + currentMonth - birthDetails.month;
         }
 
         if (currentDate >= birthDetails.date) {
             birthDate = currentDate - birthDetails.date
         } else {
             birthMonth--;
-            let days = months[currentMonth - 2];
-            birthDate = days + currentDate - birthDetails.date;
-            if (birthMonth < 0) {
-                birthMonth = 11;
-                birthYear--;
-            }
+            let days = months[currentMonth - 2] - birthDetails.date;
+            birthDate = days + currentDate;
         }
         //  console.log(birthYear, birthMonth, birthDate);
         displayResult(birthDate, birthMonth, birthYear);
